@@ -1,0 +1,184 @@
+@import "_nullstyle";
+
+//under development
+// promixes ------
+$fontFamily: "Quicksand", sans-serif;
+//$font-family: Amazon Ember; //!
+$fontSize: 1rem;
+
+$mainColor: #6a6e77;
+$darkColor: #1c1f25;
+
+$minWidth: 320;
+$maxWidth: 1440;
+$maxHeigth: 1080;
+$containerPadding: 480;
+
+$maxWidthContainer: 0;
+
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+$pc: em($containerWidth);
+
+$resposiveType: 1;
+
+//$f: math.div(230,3);
+//@debug $f;
+@mixin math($math, $startvalue, $secondvalue) {
+    #{$math}: ($startvalue / $secondvalue) + "px";
+}
+
+@mixin adaptive-value($property, $minSize, $maxSize, $min-screen, $max-screen) {
+    $addsize: $maxSize - $minSize;
+    $screen-width: $max-screen - $min-screen;
+    $screen-range: 100vw - #{$min-screen + "px"};
+    $valueSize: calc(#{$minSize + px} + #{$addsize} * ((#{$screen-range}) / #{$screen-width}));
+    #{$property}: $valueSize;
+}
+
+// Don`t forgot cascadeee ------
+
+body {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    background: #272626;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+[class*="__container"] {
+    @include adaptive-value(padding-left, 15, 40, $minWidth, $maxWidth);
+    @include adaptive-value(padding-right, 15, 40, $minWidth, $maxWidth);
+}
+.main__container {
+    @include adaptive-value(padding-top, 80, 150, $minWidth, $maxWidth);
+}
+
+/* containers
+[class*="__container"]{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+@media(max-width: 1199.98px){
+    [class*="__container"]{
+        max-width: 970px;
+    }
+}
+
+@media(max-width: 990.98px){
+    [class*="__container"]{
+        max-width: 750px;
+    }
+}
+
+@media(max-width: 767.98px){
+    [class*="__container"]{
+        max-width: 650px;
+    }
+}*/
+/*
+
+    &__img {
+        flex: 1 1 auto; /* 234/659 
+        height: 50%;
+        // position: relative;//
+        margin-bottom: 20px;
+
+        img {
+            /*
+            position: absolute;//
+            top: 0;//
+            left: 0;//
+            width: 100%;//
+            height: 100%;//
+            padding-bottom: 100%;//
+            object-position: center;
+            object-fit: cover;
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    */
+
+/*
+    &__text {
+        display: flex;
+
+        align-items: center;
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 10px;
+        min-height: 45px;
+        hyphens: auto;
+    }
+
+*/
+@media (max-width: 1024px) {
+    /*
+    .checkout {
+        &__content {
+            grid-template: auto 1fr / 1fr;
+            row-gap: 35px;
+        }
+
+        &__order-payment {
+            grid-row: 1/2;
+            margin-left: 0;
+        }
+    }
+
+    .cart {
+        &__content {
+            align-items: start;
+            grid-template: minmax(150px, 350px) minmax(80px, 1fr) minmax(120px, 200px) / 1fr;
+            grid-template-columns: 1fr;
+            row-gap: 35px;
+        }
+
+        & .cart__delivery-options {
+            grid-column: auto;
+        }
+
+        &__info {
+            grid-column: auto;
+            margin-right: 0;
+            margin-bottom: 25px;
+        }
+
+        &__quantity {
+            justify-content: start;
+
+            span {
+                //justify-items: flex-start;
+                margin-left: 0px;
+            }
+            &-change {
+                width: auto;
+                margin-bottom: 0;
+            }
+            &-box {
+                margin-bottom: 0;
+            }
+        }
+        &__btn-box {
+            margin-left: 10px;
+            margin-top: 0;
+        }
+    }*/
+}
+
+//
+@media (max-width: 767.777px) {
+}
+@media (max-width: 374.444px) {
+}
