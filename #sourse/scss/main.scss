@@ -37,28 +37,29 @@ $resposiveType: 1;
 }
 
 // Don`t forgot cascadeee ------
-
+html,
 body {
     font-family: $fontFamily;
     font-size: $fontSize;
-    background: #272626;
+    background: #1c1f2563; //#1C1F25
+    height: 100%;
+    overflow: hidden; // todo add fixed sizes to timer blok to avoid strange effect from decreasing font-size
 }
 
 .wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    color: rgb(97, 177, 247);
 }
-
+/*
 [class*="__container"] {
     @include adaptive-value(padding-left, 15, 40, $minWidth, $maxWidth);
     @include adaptive-value(padding-right, 15, 40, $minWidth, $maxWidth);
 }
-.main__container {
-    @include adaptive-value(padding-top, 80, 150, $minWidth, $maxWidth);
-}
 
-/* containers
+
+ containers
 [class*="__container"]{
     max-width: 1200px;
     margin: 0 auto;
@@ -123,6 +124,180 @@ body {
     }
 
 */
+
+/*[class*="__container"]{
+    @include adaptive-value(padding-left, 15, 150, $minWidth, $maxWidth);
+    @include adaptive-value(padding-right, 15, 150, $minWidth, $maxWidth);
+
+}*/
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    transition: margin 0.5s ease-out;
+    background: linear-gradient(90deg, #29323c 0%, #485563 100%);
+
+    // for text
+
+    font-size: 1.75rem;
+    letter-spacing: 0.1em;
+}
+.timer {
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    span {
+        margin-top: 15px;
+    }
+    transition: transform 1.5s ease-in 0s, font-size 1s ease-in 0s;
+}
+.timer.__finish {
+    transform: translate(0, -100vh);
+    font-size: 0.45rem;
+}
+
+.doors__body {
+    position: relative;
+    width: 225px;
+    height: 175px;
+    background: #fff;
+    span {
+        position: absolute;
+        inset: 0;
+        transition: 0.5s;
+
+        background: url(/img/black-doors.svg) center center / cover; // todo doors in figma
+    }
+    span:nth-child(1) {
+        clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+        //background: #a00;
+    }
+    span:nth-child(2) {
+        clip-path: polygon(50% 0, 100% 0, 100% 50%, 50% 50%);
+        //background: #0a0;
+    }
+    span:nth-child(3) {
+        clip-path: polygon(0 50%, 50% 50%, 50% 100%, 0 100%);
+        //background: #00a;
+    }
+    span:nth-child(4) {
+        clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
+        //background: #aa0;
+    }
+}
+/// ------------ 1 -----------
+.doors__body:hover span:nth-child(1) {
+    transform: translate(-40px, -60px) rotate(-15deg);
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+/// ------------ 2 -----------
+.doors__body:hover span:nth-child(2) {
+    transform: translate(40px, -60px) rotate(21deg);
+}
+
+/// ------------ 3 -----------
+.doors__body:hover span:nth-child(3) {
+    transform: translate(-40px, 60px) rotate(-12deg);
+}
+/// ------------ 4 -----------
+.doors__body:hover span:nth-child(4) {
+    transform: translate(40px, 60px) rotate(15deg);
+}
+
+.screen.up {
+    ///todo add transition bettwen  two screens and sudden appearance racer
+    margin-top: -100vh;
+}
+// first scenery for doors
+@keyframes doors__upleft-1-scenary {
+}
+@keyframes doors__upright-1-scenary {
+}
+@keyframes doors__downleft-1-scenary {
+}
+@keyframes doors__downright-1-scenary {
+}
+
+// second scenery for doors
+
+@keyframes doors__upleft-2-scenary {
+}
+@keyframes doors__upright-2-scenary {
+}
+@keyframes doors__downleft-2-scenary {
+}
+@keyframes doors__downright-2-scenary {
+}
+/*
+// .time-list {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     list-style: none;
+//     padding: 0;
+// }
+
+// .time-list li {
+//     margin: 10px;
+// }
+
+// .time-btn {
+//     background-color: transparent;
+//     border: 2px solid #c0c0c0;
+//     color: #fff;
+//     cursor: pointer;
+//     font-family: inherit;
+//     padding: 0.5rem 1rem;
+//     font-size: 1.5rem;
+// }
+
+// .time-btn:hover {
+//     border: 2px solid #16d9e3;
+//     color: #16d9e3;
+// }
+
+// .hide {
+//     opacity: 0;
+// }
+
+// .primary {
+//     color: #16d9e3;
+// }
+
+// .board {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     position: relative;
+//     width: 500px;
+//     height: 500px;
+//     background: linear-gradient(118.38deg, #29323c -4.6%, #485563 200.44%);
+//     box-shadow: -8px -8px 20px #2a333d, 10px 7px 20px #475462;
+//     border-radius: 30px;
+//     overflow: hidden;
+// }
+
+// .circle {
+//     background: linear-gradient(90deg, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+//     position: absolute;
+//     border-radius: 50%;
+//     cursor: pointer;
+// }
+// .timer {
+//     margin-bottom: 15px;
+// }
+
+// .score {
+//     color: #fff;
+//     font-size: 25px;
+// }*/
 @media (max-width: 1024px) {
     /*
     .checkout {
