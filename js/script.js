@@ -13,7 +13,7 @@ const colors = [
     "rgb(189, 82, 221)",
     "rgb(221, 82, 191)",
 ];
-
+const doors = document.querySelector(".doors__body");
 const screens = document.querySelectorAll(".screen");
 const timer = document.querySelector(".timer");
 const timeEl = document.querySelector("#time"); // todo rename it to not hav confusing situation
@@ -32,7 +32,7 @@ startBtn.addEventListener("click", (event) => {
     screens[0].classList.add("up");
 });*/
 
-let time = 5;
+let time = 1;
 
 startTimer();
 /*
@@ -60,6 +60,7 @@ board.addEventListener("click", (event) => {
 function decreaseTime() {
     if (time === 0) {
         timer.classList.add("__finish");
+        doors.classList.add("__active");
     } else {
         let current = --time;
         if (current < 10) {
