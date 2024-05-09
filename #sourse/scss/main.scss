@@ -186,9 +186,10 @@ body {
         inset: 0;
         transition: 0.5s;
 
-        background: url("https://mycola23.github.io/birthday__celebriation/img/black-doors.svg") center center / cover; // todo doors in figma
+        background: url("//img/black-doors.svg") center center / cover; // todo doors in figma
     }
     span:nth-child(1) {
+        //img/black-doors.svg
         z-index: 3;
         clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
         //background: #a00;
