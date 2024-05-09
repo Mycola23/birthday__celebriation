@@ -254,7 +254,7 @@ body {
   inset: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: url("img/blackdoors.svg") center center/cover;
+  background: url("../img/blackdoors.svg") center center/cover;
 }
 
 .doors__body span:nth-child(1) {
