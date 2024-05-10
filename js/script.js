@@ -17,11 +17,17 @@ const doors = document.querySelector(".doors__body");
 const screens = document.querySelectorAll(".screen");
 const timer = document.querySelector(".timer");
 const timeEl = document.querySelector("#time"); // todo rename it to not hav confusing situation
-
+const audioBtn = document.querySelector(".audio");
+const audio = document.querySelector("audio");
+const firstRacer = document.querySelector(".img__racer");
+const explosion = document.querySelector(".explosion");
+console.log(audio);
 document.addEventListener("click", (e) => {
     const target = e.target;
-    if (target.closest(".timer")) {
-        target.classList.add("__finish");
+    if (target.closest(".audio")) {
+        target.classList.add("__active");
+        audio.play();
+        startTimer();
     }
 });
 
@@ -32,9 +38,8 @@ startBtn.addEventListener("click", (event) => {
     screens[0].classList.add("up");
 });*/
 
-let time = 1;
+let time = 21;
 
-startTimer();
 /*
 timeListBtn.addEventListener("click", (e) => {
     if (e.target.closest(".time-btn")) {
@@ -61,6 +66,9 @@ function decreaseTime() {
     if (time === 0) {
         timer.classList.add("__finish");
         doors.classList.add("__active");
+        firstRacer.classList.add("__active");
+        explosion.classList.add("__active");
+        screens[1].classList.add("up");
     } else {
         let current = --time;
         if (current < 10) {

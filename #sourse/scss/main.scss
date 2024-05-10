@@ -131,6 +131,44 @@ body {
 
 }*/
 
+.audio {
+    display: block;
+    opacity: 1;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-45%, 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1.5s ease 0s;
+    div {
+        position: relative;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: #abf382;
+        box-shadow: 3px 3px 10px 5px #1c1f25;
+        transition: all 0.5s ease 0s;
+    }
+    div:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-left: 30px solid #1c1f25;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+    }
+}
+.audio div.__active {
+    transform: translate(100vw, 0);
+    transition: all 1.5s ease 0s;
+}
+
 .screen {
     display: flex;
     flex-direction: column;
@@ -138,13 +176,19 @@ body {
     justify-content: center;
     min-height: 100vh;
     width: 100vw;
-    transition: margin 0.5s ease-out;
+    transition: margin 0.7s ease-out;
     background: linear-gradient(90deg, #29323c 0%, #485563 100%);
 
     // for text
 
     font-size: 1.75rem;
     letter-spacing: 0.1em;
+}
+
+.screen.up {
+    //todo add transition bettwen  two screens and sudden appearance racer
+    transition: all 1.5s ease-in 12.9s;
+    margin-top: -100vh;
 }
 
 /*.screen::after {
@@ -180,7 +224,7 @@ body {
     background: #fff;
     transition: all 1.5s ease-in 0s;
     transform: translate(0, 100vh);
-    animation: "explosion" 2.5s ease-in-out 7s forwards;
+
     span {
         position: absolute;
         inset: 0;
@@ -210,37 +254,33 @@ body {
 
 .doors__body.__active {
     transform: translate(0, 0);
+    animation: "explosion" 2.5s ease-in-out 7s forwards;
 }
 
 /// ------------ 1 -----------
 .doors__body.__active span:nth-child(1) {
     transform-origin: 50px 50px;
-    animation: "doors__upleft-1-scenary" 2.5s linear 2s forwards,
-        "doors__upleft-2-scenary" 3.2s ease-in-out 4.1s forwards; //todo по цьому принципу додаємо анімацію до інших не забуваючи змінити transform-origin
+    animation: "doors__upleft-1-scenary" 2s linear 2s forwards, "doors__upleft-2-scenary" 3.2s ease-in-out 4.1s forwards; //todo по цьому принципу додаємо анімацію до інших не забуваючи змінити transform-origin
 }
 /// ------------ 2 -----------
 .doors__body.__active span:nth-child(2) {
     transform-origin: 150px 50px;
-    animation: "doors__upright-1-scenary" 2.5s linear 2.8s forwards,
+    animation: "doors__upright-1-scenary" 2s linear 2.8s forwards,
+        // duratiin all  2.5   , delay 2.8
         "doors__upright-2-scenary" 3.2s ease-in-out 4.7s forwards;
 }
 
 /// ------------ 3 -----------
 .doors__body.__active span:nth-child(3) {
     transform-origin: 50px 145px;
-    animation: "doors__downleft-1-scenary" 2.5s linear 3s forwards,
+    animation: "doors__downleft-1-scenary" 2s linear 3s forwards,
         "doors__downleft-2-scenary" 3.2s ease-in-out 5s forwards;
 }
 /// ------------ 4 -----------
 .doors__body.__active span:nth-child(4) {
     transform-origin: 145px 145px;
-    animation: "doors__downright-1-scenary" 2.5s linear 3.3s forwards,
+    animation: "doors__downright-1-scenary" 2s linear 3.3s forwards,
         "doors__downright-2-scenary" 3.2s ease-in-out 5.3s forwards;
-}
-
-.screen.up {
-    //todo add transition bettwen  two screens and sudden appearance racer
-    margin-top: -100vh;
 }
 
 .img__racer {
@@ -251,8 +291,7 @@ body {
     width: 175px;
     z-index: 2;
     transform: translate(-200px, -35px) scale(0.5);
-    animation: "carMovementToCenter" 5.5s linear 1.1s forwards, "carMovementtoEDge" 2.5s ease-in-out 7s forwards,
-        "carbackUp" 2.5s ease-in-out 9.5s forwards; // delay depend on timer and music
+    // delay depend on timer and music
 
     img {
         max-width: 100%;
@@ -269,6 +308,11 @@ body {
         // height: 100%;
     }
 }
+.img__racer.__active {
+    animation: "carMovementToCenter" 5.5s linear 1.1s forwards, "carMovementtoEDge" 2.5s ease-in-out 7.5s forwards,
+        "carbackUp" 2.5s ease-in-out 9.5s forwards;
+}
+
 .explosion {
     z-index: 1;
     position: absolute;
@@ -280,7 +324,9 @@ body {
     width: 25px; // 25px  tranform in 350vh
     height: 25px; // 25px
     background-color: #fff;
-    animation: "secondPartofExplosion" 2.5s ease-in-out 7s forwards,
+}
+.explosion.__active {
+    animation: "secondPartofExplosion" 2.3s ease-in-out 7.5s forwards,
         "lastpartOfExplosion" 2.5s ease-in-out 9.5s forwards;
 }
 
