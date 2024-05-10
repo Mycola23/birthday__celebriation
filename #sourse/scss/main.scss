@@ -185,8 +185,8 @@ body {
         position: absolute;
         inset: 0;
         transition: 0.5s;
-
-        background: url("../img/black-doors.svg") center center / cover; // todo doors in figma         img/blackdoors.svg
+        //! не чіпати для GITHUB - is correct ../img/black-doors.svg
+        background: url("../../img/black-doors.svg") center center / cover; // todo doors in figma         img/blackdoors.svg
     }
     span:nth-child(1) {
         //img/black-doors.svg
