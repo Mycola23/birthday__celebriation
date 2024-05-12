@@ -43,7 +43,12 @@ body {
     font-size: $fontSize;
     background: #1c1f2563; //#1C1F25
     height: 100%;
-    overflow: hidden; // todo add fixed sizes to timer blok to avoid strange effect from decreasing font-size
+    // todo add fixed sizes to timer blok to avoid strange effect from decreasing font-size
+}
+:root,
+html,
+body {
+    overflow: hidden;
 }
 
 .wrapper {
@@ -168,6 +173,11 @@ body {
     transform: translate(100vw, 0);
     transition: all 1.5s ease 0s;
 }
+.audio.__hidden div {
+    transform: translate(0, 0);
+    opacity: 0;
+    display: none;
+}
 
 .screen {
     display: flex;
@@ -230,7 +240,7 @@ body {
         inset: 0;
         transition: 0.5s;
         //! не чіпати для GITHUB - is correct ../img/black-doors.svg
-        background: url("../img/black-doors.svg") center center / cover; // todo doors in figma         img/blackdoors.svg
+        background: url("../../img/black-doors.svg") center center / cover; // todo doors in figma         img/blackdoors.svg
     }
     span:nth-child(1) {
         //img/black-doors.svg
@@ -309,7 +319,7 @@ body {
     }
 }
 .img__racer.__active {
-    animation: "carMovementToCenter" 5.5s linear 1.1s forwards, "carMovementtoEDge" 2.5s ease-in-out 7.5s forwards,
+    animation: "carMovementToCenter" 5.4s linear 1.1s forwards, "carMovementtoEDge" 2s ease-in-out 7.5s forwards,
         "carbackUp" 2.5s ease-in-out 9.5s forwards;
 }
 
@@ -499,6 +509,238 @@ body {
     }
 }
 
+.line {
+    &__body {
+    }
+    &__body div {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        width: 100%;
+        // max-width: 100%;
+        // padding-bottom: 60%;
+        // object-position: center;
+        // object-fit: cover;
+        // width: 50%; /* Set the width of the container */
+        // max-width: 200px; /* Set the maximum width */
+        // margin: 0 auto;
+        // border-radius: 5px;
+        svg {
+            // max-width: 100%;
+            // height: auto;
+        }
+        //position: relative;
+        //top: 0;
+        //left: 0;
+        max-width: 100%;
+        // height: 100vh;
+        // width: 100vw;
+        //background: url("../../img/wave-haikei.svg") center/cover no-repeat;
+        //animation: "change-wave" 1.5s ease-in-out 13.5s infinite;
+        /* 900/600 */
+        @keyframes change-wave {
+            0% {
+                background: url("../../img/wave-haikei.svg") center/cover no-repeat;
+            }
+            50% {
+                opacity: 0.75;
+            }
+            100% {
+                background: url("../../img/secondwave.svg") center/cover no-repeat;
+            }
+        }
+    }
+}
+.second {
+    position: relative;
+}
+.car {
+    //display: inline-block;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    &__body {
+        transform: translate(-300%, 0);
+    }
+    &__body.__active {
+        animation: "carappear" 1.5s linear 4.9s forwards, "carbodydance" 0.9s linear 6.5s infinite;
+    }
+
+    &__left-wheel {
+        position: absolute;
+        top: 73%;
+        left: 17%;
+        display: inline-block;
+        //transition: transform 1.5s ease-in-out 14.5s;
+        //animation: "rotate" 0.5s linear 0s infinite;
+        transform: translate(-200vh, 0); // delay 13.5
+    }
+    &__left-wheel.__active {
+        animation: "carappear" 1.5s linear 3.9s forwards, "rotate" 0.5s linear 6.5s infinite,
+            "dance1" 0.8s linear 6.8s infinite;
+    }
+
+    &__right-wheel {
+        display: inline-block;
+        position: absolute;
+        top: 65%;
+        right: 14%;
+        //transition: transform 1.5s ease-in-out 14.5s;
+        transform: translate(-200vh, 0);
+        //animation: "rotate" 0.5s linear 0s infinite;
+    }
+    &__right-wheel.__active {
+        //transform: translate(0, 0);
+        animation: "carappear" 1.5s linear 3.6s forwards, "rotate" 0.5s linear 6.5s infinite,
+            "dance1" 0.8s linear 6.5s infinite;
+    }
+}
+.img {
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: otate(180deg);
+    }
+    100% {
+        transform: rotate(366deg);
+    }
+}
+@keyframes carappear {
+    0% {
+        transform: translate(-200vh, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes dance1 {
+    0% {
+        //transform: translate(0, 0);
+        top: 65%;
+    }
+    50% {
+        top: 130%;
+    }
+    100% {
+        top: 65%;
+    }
+}
+
+@keyframes carbodydance {
+    0% {
+        //transform: translate(0, 0);
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+.text {
+    position: absolute;
+    top: 5%;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        font-family: "Caveat", sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        font-style: italic;
+        margin-right: 0.4em;
+    }
+    span:nth-child(1) {
+        color: #fff;
+        margin-right: 0.6em;
+        transform: translate(100vh, 0);
+    }
+
+    span:nth-child(2) {
+        color: #fcaf3c;
+        transform: translate(100vh, 0);
+    }
+    span:nth-child(3) {
+        color: #3cbffc;
+        transform: translate(100vh, 0);
+    }
+    span:nth-child(4) {
+        color: #493cfc;
+        transform: translate(100vh, 0);
+    }
+    span:nth-child(5) {
+        color: #e63cfc;
+        transform: translate(100vh, 0);
+    }
+    span:nth-child(6) {
+        color: #fc3c56;
+        transform: translate(100vh, 0);
+    }
+    span:nth-child(7) {
+        transform: translate(100vh, 0);
+    }
+    span:nth-child(8) {
+        transform: translate(100vh, 0);
+    }
+
+    span:nth-child(1).__active {
+        animation: "letterAppear" 1.5s linear 13.9s forwards, "letterdance" 1s ease-in-out 16.3s infinite;
+    }
+    span:nth-child(2).__active {
+        animation: "letterAppear" 1.5s linear 14.2s forwards, "letterdance" 1s ease-in-out 16.6s infinite;
+    }
+    span:nth-child(3).__active {
+        animation: "letterAppear" 1.5s linear 14.4s forwards, "letterdance" 1s ease-in-out 16.3s infinite;
+    }
+    span:nth-child(4).__active {
+        animation: "letterAppear" 1.5s linear 14.6s forwards, "letterdance" 1s ease-in-out 16.6s infinite;
+    }
+    span:nth-child(5).__active {
+        animation: "letterAppear" 1.5s linear 14.8s forwards, "letterdance" 1s ease-in-out 16.3s infinite;
+    }
+    span:nth-child(6).__active {
+        animation: "letterAppear" 1.5s linear 15s forwards, "letterdance" 1s ease-in-out 16.6s infinite;
+    }
+    span:nth-child(7).__active {
+        animation: "letterAppear" 1.5s linear 15.2s forwards, "letterdance" 1s ease-in-out 16.3s infinite;
+    }
+    span:nth-child(8).__active {
+        animation: "letterAppear" 1.5s linear 15.9s forwards, "letterdance" 1s ease-in-out 16.6s infinite;
+    }
+    @keyframes letterAppear {
+        0% {
+            transform: translate(100vh, 0) scale(0.5);
+        }
+        55% {
+            transform: translate(25vh, 0) scale(1.5);
+        }
+        100% {
+            transform: translate(0, 0) scale(1);
+        }
+    }
+    @keyframes letterdance {
+        0% {
+            transform: scale(1);
+        }
+        55% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+}
+
 /*
 // .time-list {
 //     display: flex;
@@ -563,57 +805,6 @@ body {
 //     font-size: 25px;
 // }*/
 @media (max-width: 1024px) {
-    /*
-    .checkout {
-        &__content {
-            grid-template: auto 1fr / 1fr;
-            row-gap: 35px;
-        }
-
-        &__order-payment {
-            grid-row: 1/2;
-            margin-left: 0;
-        }
-    }
-
-    .cart {
-        &__content {
-            align-items: start;
-            grid-template: minmax(150px, 350px) minmax(80px, 1fr) minmax(120px, 200px) / 1fr;
-            grid-template-columns: 1fr;
-            row-gap: 35px;
-        }
-
-        & .cart__delivery-options {
-            grid-column: auto;
-        }
-
-        &__info {
-            grid-column: auto;
-            margin-right: 0;
-            margin-bottom: 25px;
-        }
-
-        &__quantity {
-            justify-content: start;
-
-            span {
-                //justify-items: flex-start;
-                margin-left: 0px;
-            }
-            &-change {
-                width: auto;
-                margin-bottom: 0;
-            }
-            &-box {
-                margin-bottom: 0;
-            }
-        }
-        &__btn-box {
-            margin-left: 10px;
-            margin-top: 0;
-        }
-    }*/
 }
 
 //

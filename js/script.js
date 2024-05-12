@@ -19,8 +19,16 @@ const timer = document.querySelector(".timer");
 const timeEl = document.querySelector("#time"); // todo rename it to not hav confusing situation
 const audioBtn = document.querySelector(".audio");
 const audio = document.querySelector("audio");
+const secondAudio = document.querySelector(".secondaudio");
 const firstRacer = document.querySelector(".img__racer");
 const explosion = document.querySelector(".explosion");
+const text = document.querySelectorAll(".text>span");
+console.log(text);
+// second screen
+const rightWheel = document.querySelector(".car__right-wheel");
+const leftWheel = document.querySelector(".car__left-wheel");
+const cartingBody = document.querySelector(".car__body");
+///
 console.log(audio);
 document.addEventListener("click", (e) => {
     const target = e.target;
@@ -69,6 +77,16 @@ function decreaseTime() {
         firstRacer.classList.add("__active");
         explosion.classList.add("__active");
         screens[1].classList.add("up");
+        audioBtn.classList.add("__hidden");
+        setTimeout(() => {
+            secondAudio.play();
+            rightWheel.classList.add("__active");
+            leftWheel.classList.add("__active");
+            cartingBody.classList.add("__active");
+            text.forEach((element) => {
+                element.classList.add("__active");
+            });
+        }, 13500);
     } else {
         let current = --time;
         if (current < 10) {
